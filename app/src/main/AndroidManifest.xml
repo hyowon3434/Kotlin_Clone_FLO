@@ -17,6 +17,11 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication">
+
+        </activity>
+        <activity
+            android:name=".SongActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
