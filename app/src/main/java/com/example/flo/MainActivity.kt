@@ -17,13 +17,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.mainPlayerCl.setOnClickListener{
-            startActivity(Intent(this, SongActrivity::class.java))
-        }
+        val song = Song(binding.mainMinPlayerTitleTv.text.ToString(), binding.mainMiniplayerSingerTv.text.toString())
 
+        binding.mainPlayerCl.setOnClickListener{
+            //startActivity(Intent(this, SongActrivity::class.java))
+            val intent = Intent(this, SongActrivity::class.java)
+            intent.putExtra("title", song.title)
+            intent.putExtra("singer", song.singer)
+            startActivity(intent)
+        }
         initBottomNavigation()
 
-        val song = Song(binding.mainMinPlayerTitleTv.text.ToString(), binding.mainMiniplayerSingerTv.text.toString())
+
 
         Log.d("Song", song.title + song.singer)
     }
