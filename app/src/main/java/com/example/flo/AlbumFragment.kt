@@ -8,11 +8,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAlbumBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class AlbumFragment  : Fragment() {
 
     lateinit var binding : FragmentAlbumBinding
 
+    private val information= arrayListOf("수록곡", "상세정보","영상")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +33,10 @@ class AlbumFragment  : Fragment() {
 
         val albumAdapter = AlbumVPAdapter(this)
         binding.albumContentVp.adapter = albumAdapter
+        TabLayoutMediator(binding.albumContentTb, binding.albumContentVp){
+            tab, positon ->
+            tab.text = information[positon]
+        }.attach()
 
         return binding.root
     }
